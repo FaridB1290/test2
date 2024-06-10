@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+                 package deliveryIntegration;
+service DeliveryIntegrationService {
+ rpc createDeliveryIntegration (DeliveryIntegrationCreateInput) returns (DeliveryIntegration) {}
+rpc deliveryIntegrations (findManyParams) returns (stream DeliveryIntegration) {}
+rpc deliveryIntegration (DeliveryIntegrationWhereUniqueInput) returns (DeliveryIntegration) {}
+rpc updateDeliveryIntegration (DeliveryIntegrationUpdateInput) returns (DeliveryIntegration) {}
+rpc deleteDeliveryIntegration (DeliveryIntegrationWhereUniqueInput) returns (DeliveryIntegration) {} 
+ }
+message DeliveryIntegrationCreateInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message DeliveryIntegration {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message DeliveryIntegrationWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message DeliveryIntegrationUpdateInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message findManyParams {
+
+};

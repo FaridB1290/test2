@@ -1,0 +1,83 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Analytics {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model CustomerFeedback {
+  createdAt              DateTime              @default(now())
+  id                     String                @id @default(cuid())
+  notifications          Notification[]
+  restaurantManagement   RestaurantManagement? @relation(fields: [restaurantManagementId], references: [id])
+  restaurantManagementId String?
+  updatedAt              DateTime              @updatedAt
+}
+
+model DeliveryIntegration {
+  createdAt     DateTime     @default(now())
+  id            String       @id @default(cuid())
+  reservation   Reservation? @relation(fields: [reservationId], references: [id])
+  reservationId String?
+  updatedAt     DateTime     @updatedAt
+}
+
+model Notification {
+  createdAt          DateTime          @default(now())
+  customerFeedback   CustomerFeedback? @relation(fields: [customerFeedbackId], references: [id])
+  customerFeedbackId String?
+  id                 String            @id @default(cuid())
+  updatedAt          DateTime          @updatedAt
+}
+
+model RestaurantManagement {
+  createdAt         DateTime           @default(now())
+  customerFeedbacks CustomerFeedback[]
+  id                String             @id @default(cuid())
+  loyaltyPrograms   LoyaltyProgram[]
+  updatedAt         DateTime           @updatedAt
+}
+
+model LoyaltyProgram {
+  createdAt              DateTime              @default(now())
+  id                     String                @id @default(cuid())
+  restaurantManagement   RestaurantManagement? @relation(fields: [restaurantManagementId], references: [id])
+  restaurantManagementId String?
+  updatedAt              DateTime              @updatedAt
+}
+
+model Inventory {
+  createdAt    DateTime      @default(now())
+  id           String        @id @default(cuid())
+  reservations Reservation[]
+  updatedAt    DateTime      @updatedAt
+}
+
+model Reservation {
+  createdAt            DateTime              @default(now())
+  deliveryIntegrations DeliveryIntegration[]
+  id                   String                @id @default(cuid())
+  inventory            Inventory?            @relation(fields: [inventoryId], references: [id])
+  inventoryId          String?
+  updatedAt            DateTime              @updatedAt
+}
+
+model User {
+  createdAt DateTime @default(now())
+  email     String?  @unique
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  password  String
+  roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}

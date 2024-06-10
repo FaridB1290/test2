@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+                 package customerFeedback;
+service CustomerFeedbackService {
+ rpc createCustomerFeedback (CustomerFeedbackCreateInput) returns (CustomerFeedback) {}
+rpc customerFeedbacks (findManyParams) returns (stream CustomerFeedback) {}
+rpc customerFeedback (CustomerFeedbackWhereUniqueInput) returns (CustomerFeedback) {}
+rpc updateCustomerFeedback (CustomerFeedbackUpdateInput) returns (CustomerFeedback) {}
+rpc deleteCustomerFeedback (CustomerFeedbackWhereUniqueInput) returns (CustomerFeedback) {}
+rpc findManyCustomerFeedback (CustomerFeedbackWhereUniqueInput) returns (stream Notification) {}
+rpc updateCustomerFeedback (NotificationParams) returns (stream Notification) {}
+rpc connectCustomerFeedback (NotificationParams) returns (Notification) {}
+rpc disconnectCustomerFeedback (NotificationParams) returns (Notification) {} 
+ }
+message CustomerFeedbackCreateInput {
+string createdAt = 1;
+string id = 2;
+repeated Notification notifications = 3;
+string updatedAt = 4;
+};
+message CustomerFeedback {
+string createdAt = 1;
+string id = 2;
+repeated Notification notifications = 3;
+string updatedAt = 4;
+};
+message CustomerFeedbackWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+repeated Notification notifications = 3;
+string updatedAt = 4;
+};
+message CustomerFeedbackUpdateInput {
+string createdAt = 1;
+string id = 2;
+repeated Notification notifications = 3;
+string updatedAt = 4;
+};
+message findManyParams {
+
+};
+message Notification {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message NotificationWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message NotificationParams {
+CustomerFeedbackWhereUniqueInput customerFeedbackWhereUniqueInput = 1;
+NotificationWhereUniqueInput notificationWhereUniqueInput = 2;
+};

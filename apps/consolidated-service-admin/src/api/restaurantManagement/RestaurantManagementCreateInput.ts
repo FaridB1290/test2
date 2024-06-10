@@ -1,0 +1,7 @@
+import { CustomerFeedbackCreateNestedManyWithoutRestaurantManagementsInput } from "./CustomerFeedbackCreateNestedManyWithoutRestaurantManagementsInput";
+import { LoyaltyProgramCreateNestedManyWithoutRestaurantManagementsInput } from "./LoyaltyProgramCreateNestedManyWithoutRestaurantManagementsInput";
+
+export type RestaurantManagementCreateInput = {
+  customerFeedbacks?: CustomerFeedbackCreateNestedManyWithoutRestaurantManagementsInput;
+  loyaltyPrograms?: LoyaltyProgramCreateNestedManyWithoutRestaurantManagementsInput;
+};

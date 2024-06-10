@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+                 package inventory;
+service InventoryService {
+ rpc createInventory (InventoryCreateInput) returns (Inventory) {}
+rpc inventories (findManyParams) returns (stream Inventory) {}
+rpc inventory (InventoryWhereUniqueInput) returns (Inventory) {}
+rpc updateInventory (InventoryUpdateInput) returns (Inventory) {}
+rpc deleteInventory (InventoryWhereUniqueInput) returns (Inventory) {}
+rpc findManyInventory (InventoryWhereUniqueInput) returns (stream Reservation) {}
+rpc updateInventory (ReservationParams) returns (stream Reservation) {}
+rpc connectInventory (ReservationParams) returns (Reservation) {}
+rpc disconnectInventory (ReservationParams) returns (Reservation) {} 
+ }
+message InventoryCreateInput {
+string createdAt = 1;
+string id = 2;
+repeated Reservation reservations = 3;
+string updatedAt = 4;
+};
+message Inventory {
+string createdAt = 1;
+string id = 2;
+repeated Reservation reservations = 3;
+string updatedAt = 4;
+};
+message InventoryWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+repeated Reservation reservations = 3;
+string updatedAt = 4;
+};
+message InventoryUpdateInput {
+string createdAt = 1;
+string id = 2;
+repeated Reservation reservations = 3;
+string updatedAt = 4;
+};
+message findManyParams {
+
+};
+message Reservation {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message ReservationWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message ReservationParams {
+InventoryWhereUniqueInput inventoryWhereUniqueInput = 1;
+ReservationWhereUniqueInput reservationWhereUniqueInput = 2;
+};

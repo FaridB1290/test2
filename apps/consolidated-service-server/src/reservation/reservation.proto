@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+                 package reservation;
+service ReservationService {
+ rpc createReservation (ReservationCreateInput) returns (Reservation) {}
+rpc reservations (findManyParams) returns (stream Reservation) {}
+rpc reservation (ReservationWhereUniqueInput) returns (Reservation) {}
+rpc updateReservation (ReservationUpdateInput) returns (Reservation) {}
+rpc deleteReservation (ReservationWhereUniqueInput) returns (Reservation) {}
+rpc findManyReservation (ReservationWhereUniqueInput) returns (stream DeliveryIntegration) {}
+rpc updateReservation (DeliveryIntegrationParams) returns (stream DeliveryIntegration) {}
+rpc connectReservation (DeliveryIntegrationParams) returns (DeliveryIntegration) {}
+rpc disconnectReservation (DeliveryIntegrationParams) returns (DeliveryIntegration) {} 
+ }
+message ReservationCreateInput {
+string createdAt = 1;
+repeated DeliveryIntegration deliveryIntegrations = 2;
+string id = 3;
+string updatedAt = 4;
+};
+message Reservation {
+string createdAt = 1;
+repeated DeliveryIntegration deliveryIntegrations = 2;
+string id = 3;
+string updatedAt = 4;
+};
+message ReservationWhereUniqueInput {
+string createdAt = 1;
+repeated DeliveryIntegration deliveryIntegrations = 2;
+string id = 3;
+string updatedAt = 4;
+};
+message ReservationUpdateInput {
+string createdAt = 1;
+repeated DeliveryIntegration deliveryIntegrations = 2;
+string id = 3;
+string updatedAt = 4;
+};
+message findManyParams {
+
+};
+message DeliveryIntegration {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message DeliveryIntegrationWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message DeliveryIntegrationParams {
+ReservationWhereUniqueInput reservationWhereUniqueInput = 1;
+DeliveryIntegrationWhereUniqueInput deliveryintegrationWhereUniqueInput = 2;
+};
