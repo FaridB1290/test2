@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+                 package restaurantManagement;
+service RestaurantManagementService {
+ rpc createRestaurantManagement (RestaurantManagementCreateInput) returns (RestaurantManagement) {}
+rpc restaurantManagements (findManyParams) returns (stream RestaurantManagement) {}
+rpc restaurantManagement (RestaurantManagementWhereUniqueInput) returns (RestaurantManagement) {}
+rpc updateRestaurantManagement (RestaurantManagementUpdateInput) returns (RestaurantManagement) {}
+rpc deleteRestaurantManagement (RestaurantManagementWhereUniqueInput) returns (RestaurantManagement) {}
+rpc findManyRestaurantManagement (RestaurantManagementWhereUniqueInput) returns (stream CustomerFeedback) {}
+rpc updateRestaurantManagement (CustomerFeedbackParams) returns (stream CustomerFeedback) {}
+rpc connectRestaurantManagement (CustomerFeedbackParams) returns (CustomerFeedback) {}
+rpc disconnectRestaurantManagement (CustomerFeedbackParams) returns (CustomerFeedback) {}
+rpc findManyRestaurantManagement (RestaurantManagementWhereUniqueInput) returns (stream LoyaltyProgram) {}
+rpc updateRestaurantManagement (LoyaltyProgramParams) returns (stream LoyaltyProgram) {}
+rpc connectRestaurantManagement (LoyaltyProgramParams) returns (LoyaltyProgram) {}
+rpc disconnectRestaurantManagement (LoyaltyProgramParams) returns (LoyaltyProgram) {} 
+ }
+message RestaurantManagementCreateInput {
+string createdAt = 1;
+repeated CustomerFeedback customerFeedbacks = 2;
+string id = 3;
+repeated LoyaltyProgram loyaltyPrograms = 4;
+string updatedAt = 5;
+};
+message RestaurantManagement {
+string createdAt = 1;
+repeated CustomerFeedback customerFeedbacks = 2;
+string id = 3;
+repeated LoyaltyProgram loyaltyPrograms = 4;
+string updatedAt = 5;
+};
+message RestaurantManagementWhereUniqueInput {
+string createdAt = 1;
+repeated CustomerFeedback customerFeedbacks = 2;
+string id = 3;
+repeated LoyaltyProgram loyaltyPrograms = 4;
+string updatedAt = 5;
+};
+message RestaurantManagementUpdateInput {
+string createdAt = 1;
+repeated CustomerFeedback customerFeedbacks = 2;
+string id = 3;
+repeated LoyaltyProgram loyaltyPrograms = 4;
+string updatedAt = 5;
+};
+message findManyParams {
+
+};
+message CustomerFeedback {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message CustomerFeedbackWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message CustomerFeedbackParams {
+RestaurantManagementWhereUniqueInput restaurantManagementWhereUniqueInput = 1;
+CustomerFeedbackWhereUniqueInput customerfeedbackWhereUniqueInput = 2;
+};
+message LoyaltyProgram {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message LoyaltyProgramWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message LoyaltyProgramParams {
+RestaurantManagementWhereUniqueInput restaurantManagementWhereUniqueInput = 1;
+LoyaltyProgramWhereUniqueInput loyaltyprogramWhereUniqueInput = 2;
+};

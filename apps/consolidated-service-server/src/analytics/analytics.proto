@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+                 package analytics;
+service AnalyticsService {
+ rpc createAnalytics (AnalyticsCreateInput) returns (Analytics) {}
+rpc analyticsItems (findManyParams) returns (stream Analytics) {}
+rpc analytics (AnalyticsWhereUniqueInput) returns (Analytics) {}
+rpc updateAnalytics (AnalyticsUpdateInput) returns (Analytics) {}
+rpc deleteAnalytics (AnalyticsWhereUniqueInput) returns (Analytics) {} 
+ }
+message AnalyticsCreateInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message Analytics {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message AnalyticsWhereUniqueInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message AnalyticsUpdateInput {
+string createdAt = 1;
+string id = 2;
+string updatedAt = 3;
+};
+message findManyParams {
+
+};
